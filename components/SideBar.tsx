@@ -31,7 +31,7 @@ const SideBar = () => {
   console.log(windowSize);
   return (
     <>
-      <nav className="w-96 dark:bg-gray-800 flex flex-col justify-between md:relative top-0 duration-300 ease-in-out  bg-slate-500 rounded-2xl ">
+      <nav className="w-96 dark:bg-gray-800 flex flex-col justify-between border border-slate-700 md:relative top-0 duration-300 ease-in-out  bg-slate-500 rounded-2xl ">
         <div className="flex flex-col gap-3 p-6  items-center">
           <Image
             src={"/logo.jpg"}
@@ -40,7 +40,7 @@ const SideBar = () => {
             height={100}
             alt="Avatar"
           />
-          <h1 className="flex flex-col gap-2 text-center">
+          <h1 className="flex flex-col  text-center md:text-lg">
             <span>Moknine</span>
             <span>Elhadj</span>
           </h1>
@@ -50,7 +50,7 @@ const SideBar = () => {
             <Link
               className={`${
                 pathname === link.href
-                  ? "text-blue-600 bg-blue-900 font-semibold"
+                  ? "text-blue-600 bg-slate-700 font-semibold border-r-4 border-blue-500"
                   : ""
               } px-4 py-2 hover:bg-blue-900  w-full duration-300`}
               href={link.href}
@@ -62,9 +62,27 @@ const SideBar = () => {
           ))}
         </div>
         <div>
-          <div className="flex flex-col gap-6 items-center p-6 ">
-            <Link href="/login">Login</Link>
-            <Link href="/register">Register</Link>
+          <div className="flex flex-col gap-6 text-center items-center pb-6 ">
+            <Link
+              className={`${
+                pathname === "/login"
+                  ? "text-blue-600 bg-slate-700 font-semibold border-r-4 border-blue-500"
+                  : ""
+              } px-4 py-2 hover:bg-blue-900  w-full duration-300`}
+              href="/login"
+            >
+              Login
+            </Link>
+            <Link
+              className={`${
+                pathname === "/register"
+                  ? "text-blue-600 bg-slate-700 font-semibold border-r-4 border-blue-500"
+                  : ""
+              } px-4 py-2 hover:bg-blue-900  w-full duration-300`}
+              href="/register"
+            >
+              Register
+            </Link>
           </div>
         </div>
       </nav>
