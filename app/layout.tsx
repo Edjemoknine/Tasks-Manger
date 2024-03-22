@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import SideBar from "@/components/SideBar";
-import { ClerkProvider } from "@clerk/nextjs";
+import { auth, ClerkProvider } from "@clerk/nextjs";
 const inter = Inter({ subsets: ["latin"] });
 import GlobalProvider from "../context/GlobalContext";
 export const metadata: Metadata = {
@@ -15,12 +15,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { userId } = auth();
   return (
     <ClerkProvider>
       <html lang="en">
         <body className={inter.className}>
           <GlobalProvider>
-            <SideBar />
+            {userId && <SideBar />}
             {children}
           </GlobalProvider>
         </body>
