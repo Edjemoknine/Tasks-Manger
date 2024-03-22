@@ -1,4 +1,5 @@
 "use client";
+import { UserButton } from "@clerk/nextjs";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -40,6 +41,7 @@ const SideBar = () => {
             height={100}
             alt="Avatar"
           />
+          <UserButton />
           <h1 className="flex flex-col  text-center md:text-lg">
             <span>Moknine</span>
             <span>Elhadj</span>
@@ -69,7 +71,7 @@ const SideBar = () => {
                   ? "text-blue-600 bg-slate-700 font-semibold border-r-4 border-blue-500"
                   : ""
               } px-4 py-2 hover:bg-blue-900  w-full duration-300`}
-              href="/login"
+              href="/sign-in"
             >
               Login
             </Link>
@@ -79,7 +81,7 @@ const SideBar = () => {
                   ? "text-blue-600 bg-slate-700 font-semibold border-r-4 border-blue-500"
                   : ""
               } px-4 py-2 hover:bg-blue-900  w-full duration-300`}
-              href="/register"
+              href="/sign-up"
             >
               Register
             </Link>
