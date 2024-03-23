@@ -2,10 +2,13 @@
 
 import { createContext, useContext, useState } from "react";
 import { ThemeProvider } from "next-themes";
-const GlobalContext = createContext(null);
+
+const GlobalContext = createContext();
 const GlobalProvider = ({ children }) => {
+  const [show, setShow] = useState(false);
+
   return (
-    <GlobalContext.Provider>
+    <GlobalContext.Provider value={{ show, setShow }}>
       <ThemeProvider attribute="class" defaultTheme="dark">
         <div className="flex h-screen p-10 gap-10 ">{children}</div>
       </ThemeProvider>
