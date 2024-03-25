@@ -13,7 +13,7 @@ export const POST = async (req: Request) => {
 
     const { title, description, isCompleted, isImportant, date } =
       await req.json();
-    console.log(title, description, isCompleted, date, isImportant);
+    // console.log(title, description, isCompleted, date, isImportant);
     const task = await prisma.task.create({
       data: {
         title,
@@ -31,12 +31,18 @@ export const POST = async (req: Request) => {
     return NextResponse.json({ message: "Error creating task", status: 500 });
   }
 };
-export const GET = async (req: Request) => {
+export async function GET(req: Request) {
   try {
-    const tasks = await prisma.task.findMany();
+    // const userId = auth();
+    // console.log(userId);
+    // if (!userId) {
+    //   return NextResponse.json({ message: "Unauthorized", status: 401 });
+    // }
+    const tasks = await prisma.task.findMany({});
+    revalidatePath("/");
 
     return new NextResponse(JSON.stringify(tasks));
   } catch (error) {
     console.log(error);
   }
-};
+}

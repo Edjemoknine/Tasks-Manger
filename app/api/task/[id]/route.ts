@@ -8,6 +8,7 @@ const prisma = new PrismaClient();
 export const GET = async (req: Request, { params }: { params: any }) => {
   try {
     const { id } = params;
+    console.log(id);
     const task = await prisma.task.findUnique({ where: { id } });
 
     return NextResponse.json({ task, status: 500 });
@@ -24,8 +25,8 @@ export const PUT = async (req: Request, { params }: { params: any }) => {
       return NextResponse.json({ message: "Unauthorized", status: 401 });
     }
 
-    const { title, description, important, completed, date } = await req.json();
-
+    const { title, description, isCompleted, isImportant, date } =
+      await req.json();
     const task = await prisma.task.update({
       where: {
         id: id,
@@ -33,10 +34,10 @@ export const PUT = async (req: Request, { params }: { params: any }) => {
       data: {
         title,
         description,
-        isImporatnt: important,
-        completed,
+        isImporatnt: isImportant,
+        completed: isCompleted,
         date,
-        userId: userId,
+        userId,
       },
     });
     revalidatePath("/");
