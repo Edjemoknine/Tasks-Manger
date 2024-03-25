@@ -27,7 +27,7 @@ const Task = ({ item }: any) => {
   const [show, setShow] = useState(false);
 
   return (
-    <div className="p-6 rounded-2xl border h-50 flex flex-col justify-between border-slate-700 dark:bg-slate-900 bg-slate-600>Task">
+    <div className="p-6 rounded-2xl border flex flex-col h-fit min-h-52 justify-between border-slate-700 dark:bg-slate-900 bg-slate-500">
       <h1 className="font-medium">{item.title}</h1>
       <p className="text-xs mt-3 truncate">{item.description}</p>
       <p className="text-[10px] text-slate-500 float-right  mt-3 w-fit">
@@ -36,12 +36,12 @@ const Task = ({ item }: any) => {
       <div className="flex gap-4 mt-4 items-center justify-between">
         <button
           className={
-            item.complete
+            item.completed
               ? "bg-green-500 rounded-xl px-4 py-2 text-xs"
               : "bg-red-500 rounded-xl px-4 py-2 text-xs"
           }
         >
-          {item.complete ? "comleted" : "inCompleted"}
+          {item.completed ? "completed" : "inCompleted"}
         </button>
         <div className="flex items-center">
           <button
@@ -59,7 +59,7 @@ const Task = ({ item }: any) => {
         </div>
       </div>
       <Model show={show} setShow={setShow}>
-        <TaskForm type="Update" task={item} />
+        <TaskForm setShow={setShow} type="Update" task={item} />
       </Model>
     </div>
   );

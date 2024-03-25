@@ -1,11 +1,30 @@
-import React from "react";
+import Task from "@/components/Task";
+import Tasks from "@/components/Tasks";
+import { ThemeButton } from "@/components/ThemButton";
+import { unstable_noStore } from "next/cache";
 
-const Important = () => {
-  return (
-    <main className="w-full h-full rounded-2xl dark:bg-gray-800 bg-slate-500 p-6">
-      <div className="bg-slate-900 rounded-2xl p-4 flex justify-end"></div>
-    </main>
-  );
+unstable_noStore();
+
+const getTasks = async () => {
+  const res = await fetch("http://localhost:3000/api/task", {
+    cache: "no-cache",
+  });
+  const data = await res.json();
+  return data;
 };
+export default async function Completed() {
+  const tasks = await getTasks();
 
-export default Important;
+  const importantTasks = tasks.filter((task: any) => task.isImporatnt);
+
+  return (
+    <>
+      <h1 className="text-xl font-semibold my-4">Important Tasks!</h1>
+      <div className="task_Container h-[70vh] grid pr-3 lg:grid-cols-3 gap-4 mt-3  grid-cols-1 min-h-[70vh] overflow-y-auto">
+        {importantTasks?.map((item: any) => (
+          <Task key={item.id} item={item} />
+        ))}
+      </div>
+    </>
+  );
+}

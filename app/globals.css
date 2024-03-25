@@ -15,9 +15,18 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+.task_Container::-webkit-scrollbar {
+  width: 8px;
+  border-radius: 20px;
+  background-color: #505050;
+}
 
+.task_Container::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background: #021a5a;
+}
 body {
   color: rgb(var(--foreground-rgb));
-  background-color: #181818;
+  /* background-color: #181818; */
   height: 100vh;
 }

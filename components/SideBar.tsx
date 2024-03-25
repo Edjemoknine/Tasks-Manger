@@ -1,5 +1,4 @@
 "use client";
-import { UserButton } from "@clerk/nextjs";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -8,7 +7,7 @@ import { useEffect, useState } from "react";
 const Links = [
   { label: "Tasks", href: "/", icon: "" },
   { label: "Completed", href: "/completed", icon: "" },
-  { label: "Important", href: "/importatnt", icon: "" },
+  { label: "Important", href: "/important", icon: "" },
   { label: "Do it Now", href: "/now", icon: "" },
 ];
 
@@ -29,10 +28,9 @@ const SideBar = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  console.log(windowSize);
   return (
     <>
-      <nav className="w-96 dark:bg-gray-800 flex flex-col justify-between border border-slate-700 md:relative top-0 duration-300 ease-in-out  bg-slate-500 rounded-2xl ">
+      <nav className="w-96 dark:bg-gray-800 flex flex-col justify-between border border-slate-700 md:relative top-0 duration-300 ease-in-out  bg-slate-400 rounded-2xl ">
         <div className="flex flex-col gap-3 p-6  items-center">
           <Image
             src={"/logo.jpg"}
@@ -41,7 +39,7 @@ const SideBar = () => {
             height={100}
             alt="Avatar"
           />
-          <UserButton />
+
           <h1 className="flex flex-col  text-center md:text-lg">
             <span>Moknine</span>
             <span>Elhadj</span>

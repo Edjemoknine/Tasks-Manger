@@ -4,9 +4,15 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import React, { FormEvent, useState } from "react";
 type ModelType = "Create" | "Update";
-const TaskForm = ({ type, task }: { type: ModelType; task?: any }) => {
-  const { setShow } = useGlobalContext();
-  console.log(task);
+const TaskForm = ({
+  type,
+  task,
+  setShow,
+}: {
+  type: ModelType;
+  task?: any;
+  setShow: any;
+}) => {
   const [state, setState] = useState({
     title: type === "Update" ? task.title : "",
     description: type === "Update" ? task.description : "",
@@ -77,7 +83,7 @@ const TaskForm = ({ type, task }: { type: ModelType; task?: any }) => {
               onChange={(e) => setIsCompleted(e.target.checked)}
               value={isCompleted.toString()}
             />
-            <span className="ml-3">is Important ?</span>
+            <span className="ml-3">Completed</span>
           </div>
 
           <div>
@@ -86,7 +92,7 @@ const TaskForm = ({ type, task }: { type: ModelType; task?: any }) => {
               onChange={(e) => setisImportant(e.target.checked)}
               value={isImportant.toString()}
             />
-            <span className="ml-3">Completed</span>
+            <span className="ml-3">is Important</span>
           </div>
         </div>
         <button className="px-4 py-2 rounded-full bg-blue-500 mt-3 hover:bg-blue-700">
