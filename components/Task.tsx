@@ -23,6 +23,15 @@ const Task = ({ item }: any) => {
       console.log(error);
     }
   };
+  const updateComplete = async () => {
+    const isCompleted = item.completed;
+    try {
+      await axios.patch(`/api/task/${item.id}`, { isCompleted });
+      router.refresh();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const [show, setShow] = useState(false);
 
@@ -30,11 +39,12 @@ const Task = ({ item }: any) => {
     <div className="p-6 rounded-2xl border flex flex-col h-fit min-h-52 justify-between border-slate-700 dark:bg-slate-900 bg-slate-500">
       <h1 className="font-medium">{item.title}</h1>
       <p className="text-xs mt-3 truncate">{item.description}</p>
-      <p className="text-[10px] text-slate-500 float-right  mt-3 w-fit">
+      <p className="text-[10px] text-slate-300 float-right  mt-3 w-fit">
         {item.date}
       </p>
       <div className="flex gap-4 mt-4 items-center justify-between">
         <button
+          onClick={updateComplete}
           className={
             item.completed
               ? "bg-green-500 rounded-xl px-4 py-2 text-xs"

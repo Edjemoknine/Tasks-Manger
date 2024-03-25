@@ -23,7 +23,7 @@
 
 .task_Container::-webkit-scrollbar-thumb {
   border-radius: 20px;
-  background: #021a5a;
+  background: #0044ff;
 }
 body {
   color: rgb(var(--foreground-rgb));
