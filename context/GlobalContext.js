@@ -10,7 +10,7 @@ const GlobalProvider = ({ children }) => {
   return (
     <GlobalContext.Provider value={{ show, setShow }}>
       <ThemeProvider attribute="class" defaultTheme="dark">
-        <div className="flex h-screen p-6 gap-10 dark:bg-[#181818] bg-slate-300">
+        <div className="flex relative h-screen p-6 gap-5 dark:bg-[#181818] bg-slate-300">
           {children}
         </div>
       </ThemeProvider>

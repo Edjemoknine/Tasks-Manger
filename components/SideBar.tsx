@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { ChevronRight, ChevronLeft } from "lucide-react";
 const Links = [
   { label: "Tasks", href: "/", icon: "" },
   { label: "Completed", href: "/completed", icon: "" },
@@ -14,23 +15,23 @@ const Links = [
 const SideBar = () => {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-
-  const [windowSize, setWindowSize] = useState(0);
-
   useEffect(() => {
-    const handleResize = () => {
-      setWindowSize(window.innerWidth);
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+    setOpen(true);
+  }, [pathname]);
 
   return (
     <>
-      <nav className="w-96 dark:bg-gray-800 flex flex-col justify-between border border-slate-700 md:relative top-0 duration-300 ease-in-out  bg-slate-400 rounded-2xl ">
+      <nav
+        className={`${
+          open ? "-left-[45%]" : "left-0"
+        } fixed top-6 md:top-0 bottom-6 md:left-0   w-40 md:w-96  dark:bg-gray-800 flex flex-col justify-between border border-slate-700 md:relative duration-300 ease-in-out  bg-slate-400 rounded-l-none rounded-r-xl md:rounded-2xl `}
+      >
+        <button
+          onClick={() => setOpen(!open)}
+          className={`md:hidden absolute top-24 border border-l-0 rounded-l-none border-slate-600 dark:bg-gray-800 -right-10 w-10 h-12 rounded-2xl flex justify-center items-center`}
+        >
+          {open ? <ChevronRight /> : <ChevronLeft />}
+        </button>
         <div className="flex flex-col gap-3 p-6  items-center">
           <Image
             src={"/logo.jpg"}

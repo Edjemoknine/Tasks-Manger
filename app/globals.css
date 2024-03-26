@@ -17,6 +17,7 @@
 }
 .task_Container::-webkit-scrollbar {
   width: 8px;
+  display: none;
   border-radius: 20px;
   background-color: #505050;
 }

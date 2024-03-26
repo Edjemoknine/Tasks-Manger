@@ -23,9 +23,9 @@ export default function RootLayout({
         <body className={inter.className}>
           <GlobalProvider>
             {userId && <SideBar />}
-            <main className="w-full h-full rounded-2xl dark:bg-gray-800 bg-slate-400 p-6">
+            <main className="w-full h-full overflow-hidden rounded-2xl dark:bg-gray-800 bg-slate-400 p-6">
               <div className="dark:bg-slate-900 bg-slate-500 rounded-2xl p-4 flex justify-between items-center ">
-                <h1 className="text-2xl font-bold">Tasks Manager</h1>
+                <h1 className="md:text-2xl font-bold">Tasks Manager</h1>
                 <ThemeButton />
               </div>
               {children}

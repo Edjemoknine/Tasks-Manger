@@ -16,7 +16,7 @@ export const ThemeButton = () => {
   }, []);
   if (!mounted) return;
   return (
-    <div className="flex gap-6 items-center">
+    <div className="flex md:gap-6 gap-3 items-center">
       <div className="border-dotted w-12 h-12 border-2 flex justify-center items-center border-slate-700 rounded-xl">
         <button onClick={() => setShow(true)} className="text-slate-600">
           <Plus />
