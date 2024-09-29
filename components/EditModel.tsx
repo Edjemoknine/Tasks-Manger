@@ -16,10 +16,9 @@ const EditModel = ({ id }: any) => {
   }, [id]);
 
   console.log(task);
-
   return (
-    <Model>
-      <TaskForm type="Update" task={"task"} />
+    <Model show={true} setShow={() => {}}>
+      <TaskForm type="Update" task={task} setShow={() => {}} />
     </Model>
   );
 };

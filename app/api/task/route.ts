@@ -33,12 +33,16 @@ export const POST = async (req: Request) => {
 };
 export async function GET(req: Request) {
   try {
-    // const userId = auth();
-    // console.log(userId);
-    // if (!userId) {
-    //   return NextResponse.json({ message: "Unauthorized", status: 401 });
-    // }
-    const tasks = await prisma.task.findMany({});
+    const { userId } = auth();
+    console.log({ userId });
+    //  if (!userId) {
+    //    return NextResponse.json({ message: "Unauthorized", status: 401 });
+    //  }
+    const tasks = await prisma.task.findMany({
+      // where: {
+      //   userId: userId as any,
+      // },
+    });
     revalidatePath("/");
 
     return new NextResponse(JSON.stringify(tasks));

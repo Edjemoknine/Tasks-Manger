@@ -8,11 +8,12 @@ const getTasks = async () => {
   const res = await fetch("http://localhost:3000/api/task", {
     cache: "no-cache",
   });
-  const data = await res.json();
+  const data = (await res.json()) || [];
   return data;
 };
 export default async function Home() {
   const tasks = await getTasks();
+  console.log(tasks);
 
   return (
     <main>
