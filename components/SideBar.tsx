@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ChevronRight, ChevronLeft } from "lucide-react";
+import React from "react";
 const Links = [
   { label: "Tasks", href: "/", icon: "" },
   { label: "Completed", href: "/completed", icon: "" },

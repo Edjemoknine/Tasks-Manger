@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import TaskForm from "./TaskForm";
 import Model from "./Model";
 
 const CreateModel = () => {
+  const [show, setshow] = useState(false);
   return (
-    <Model>
-      <TaskForm type="Create" />
+    <Model show={show} setShow={setshow}>
+      <TaskForm setShow={setshow} type="Create" />
     </Model>
   );
 };
