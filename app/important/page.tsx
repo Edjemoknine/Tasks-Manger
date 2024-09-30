@@ -1,10 +1,7 @@
 import Task from "@/components/Task";
 import Tasks from "@/components/Tasks";
 import { ThemeButton } from "@/components/ThemButton";
-import { unstable_noStore } from "next/cache";
 import React from "react";
-
-unstable_noStore();
 
 const getTasks = async () => {
   const res = await fetch("http://localhost:3000/api/task", {
